@@ -26,8 +26,12 @@ word = dictionary.hello;
 var square = function(num) {
   return num * num;
 };
+// I don't use this ever:
+function square(num) {
+  return num * num
+}
 
-c = square(num);
+c = square(a);
 
 if (true) {
   return true;
@@ -50,8 +54,8 @@ while (a > 0) {
   a -= 1;
 }
 
-for (var x = 0; x < 5; x+=1) {
-  console.log(Math.pow(x,2));
+for (var x = 0; x < 5; x += 1) {
+  console.log(Math.pow(x, 2));
 }
 
 var b = 'hello';
@@ -69,7 +73,7 @@ var willDo = function() {
 
 willDo();
 willDo();
-console.log(messThis);
+console.log(messThis); // messThis === 3
 
 var higherOrder = function(num) {
   var inception = function() {
@@ -78,7 +82,7 @@ var higherOrder = function(num) {
   return inception;
 };
 
-higherOrder(6)();
+higherOrder(6)(); // returns 11
 
 var higherOrderRedux = function(messThis) {
   var willDo = function() {
@@ -88,5 +92,5 @@ var higherOrderRedux = function(messThis) {
   return messThis;
 };
 
-higherOrderRedux(4);
+higherOrderRedux(4); // 6
 

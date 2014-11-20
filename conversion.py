@@ -11,7 +11,7 @@ third = array[2]
 last_element = array[len(array) - 1]
 
 dictionary = {
-  'hello': 'hi'
+  'hello': 'hi',
   'there': 'that'
 }
 
@@ -20,7 +20,7 @@ word = dictionary['hello']
 def square(num):
   return num * num
 
-c = square(num)
+c = square(a)
 
 
 if True:
