@@ -47,7 +47,7 @@ var launch = function() {
     return wrongCommand();
   }
   isLaunched = true;
-  change(['image', 'images/spaceship.png']);
+  change(['image', 'resources/spaceship.png']);
 };
 
 var go = function(commandWords) {
@@ -65,8 +65,15 @@ var go = function(commandWords) {
   if (displacement === undefined) {
     wrongCommand();
   }
-  ship.style.left = parseInt(ship.style.left.split('px').join(''), 10) + displacement[0] + 'px';
-  ship.style.bottom = parseInt(ship.style.bottom.split('px').join(''), 10) + displacement[1] + 'px';
+  var shipLeftPosition = parseInt(ship.style.left.split('px').join(''), 10);
+  var shipBottomPosition = parseInt(ship.style.bottom.split('px').join(''), 10);
+  ship.style.left = shipLeftPosition + displacement[0] + 'px';
+  ship.style.bottom = shipBottomPosition + displacement[1] + 'px';
+  // var properties = {
+  //   left: shipLeftPosition + displacement[0] + 'px',
+  //   bottom: shipBottomPosition + displacement[1] + 'px'
+  // };
+  // $(ship).animate(properties);
 };
 
 var change = function(commandWords) {
@@ -84,7 +91,7 @@ var change = function(commandWords) {
 
 var wrongCommand = function() {
   isLaunched = true;
-  change(['image', 'images/explode.png']);
+  change(['image', 'resources/explode.png']);
   alert('Command not recognized');
 };
 
