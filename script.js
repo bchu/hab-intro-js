@@ -20,7 +20,8 @@ var commandHandler = function(cmd) {
     change: change
   };
   var words = cmd.split(' ');
-  var firstWord = words.shift();
+  var firstWord = words[0];
+  words.shift();
   var handler = dispatch[firstWord];
   if (handler === undefined) {
     return wrongCommand();
@@ -91,7 +92,7 @@ var change = function(commandWords) {
 
 var wrongCommand = function() {
   isLaunched = true;
-  change(['image', 'resources/explode.png']);
-  alert('Command not recognized');
+  ship.src = 'resources/explode.png';
+  // alert('Command not recognized');
 };
 

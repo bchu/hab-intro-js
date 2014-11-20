@@ -4,26 +4,6 @@ body {
   text-align: center;
 }
 
-.container {
-  position: relative;
-  min-height: 500px;
-}
-
-.container .bottom-align {
-  position: absolute;
-  display: inline-block;
-  transform: translate(-50%, 0);
-  bottom: 0;
-}
-
-.container .ship {
-  position: relative;
-}
-
-.control button, .control input {
-  font-size: 16px;
-}
-
 input {
   width: 400px;
   border-radius:6px;
@@ -53,4 +33,24 @@ button:active, button:focus {
 }
 button:active {
   box-shadow: inset 0 2px 2px #ddd;
+}
+
+.container {
+  position: relative;
+  min-height: 500px;
+}
+
+.container .bottom-align {
+  position: absolute;
+  display: inline-block;
+  transform: translate(-50%, 0);
+  bottom: 0;
+}
+
+.container .ship {
+  position: relative;
+}
+
+.control button, .control input {
+  font-size: 16px;
 }
