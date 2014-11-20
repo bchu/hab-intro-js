@@ -1,0 +1,90 @@
+var textBox = document.querySelector('.control input');
+var ship = document.querySelector('.ship');
+var button = document.querySelector('.control button');
+var form = document.querySelector('.control form');
+
+
+var commandEntered = function(event) {
+  event.preventDefault();
+  var text = textBox.value;
+  commandHandler(text);
+  textBox.value = '';
+};
+
+button.addEventListener('click', commandEntered);
+
+var commandHandler = function(cmd) {
+  var dispatch = {
+    launch: launch,
+    go: go,
+    change: change
+  };
+  var words = cmd.split(' ');
+  var firstWord = words.shift();
+  var handler = dispatch[firstWord];
+  if (handler === undefined) {
+    return wrongCommand();
+  }
+  handler(words);
+
+  // if (firstWord == 'launch') {
+  //   launch();
+  // }
+  // else if (firstWord === 'go') {
+  //   go(words);
+  // }
+  // else if (firstWord === 'change') {
+  //   change(words);
+  // }
+  // else {
+  //   wrongCommand();
+  // }
+};
+
+var isLaunched = false;
+var launch = function() {
+  if (isLaunched) {
+    return wrongCommand();
+  }
+  isLaunched = true;
+  change(['image', 'images/spaceship.png']);
+};
+
+var go = function(commandWords) {
+  if (!isLaunched) {
+    return wrongCommand();
+  }
+
+  var directions = {
+    left: [-80, 0],
+    right: [80, 0],
+    up: [0, 80],
+    down: [0, -80]
+  };
+  var displacement = directions[commandWords[0]];
+  if (displacement === undefined) {
+    wrongCommand();
+  }
+  ship.style.left = parseInt(ship.style.left.split('px').join(''), 10) + displacement[0] + 'px';
+  ship.style.bottom = parseInt(ship.style.bottom.split('px').join(''), 10) + displacement[1] + 'px';
+};
+
+var change = function(commandWords) {
+  if (!isLaunched) {
+    return wrongCommand();
+  }
+
+  if (commandWords[0] == 'image') {
+    ship.src = commandWords[1];
+  }
+  else {
+    return wrongCommand();
+  }
+};
+
+var wrongCommand = function() {
+  isLaunched = true;
+  change(['image', 'images/explode.png']);
+  alert('Command not recognized');
+};
+

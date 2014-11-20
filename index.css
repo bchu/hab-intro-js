@@ -1,0 +1,56 @@
+body {
+  padding: 50px;
+  font-family: Merriweather, sans-serif;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  min-height: 500px;
+}
+
+.container .bottom-align {
+  position: absolute;
+  display: inline-block;
+  transform: translate(-50%, 0);
+  bottom: 0;
+}
+
+.container .ship {
+  position: relative;
+}
+
+.control button, .control input {
+  font-size: 16px;
+}
+
+input {
+  width: 400px;
+  border-radius:6px;
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+input:focus {
+  outline:0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 4px rgba(82,168,236,0.6);
+}
+
+button {
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #eee;
+  box-shadow: 0;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 1px 1px #ddd;
+}
+
+button:active, button:focus {
+  outline: 0;
+}
+button:active {
+  box-shadow: inset 0 2px 2px #ddd;
+}
