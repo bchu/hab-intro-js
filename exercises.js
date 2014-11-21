@@ -11,14 +11,15 @@ var reduce = function(list, reducer, initializer) {
   // YOUR CODE
 };
 
-// invokeOnce takes in a function with no arguments and returns another function.
-// The returned function calls func, but only once.
+// invokeOnce takes in a function (which has no arguments) and returns another function.
+// When the returned function is called, it calls func.
+// However, the returned function can only be called once.
 // var shout = function() { console.log('shout'); };
 // var shoutOnce = invokeOnce(shout)
 // shoutOnce(); // prints 'shout'
 // shoutOnce(); // does nothing
 var invokeOnce = function(func) {
-
+  // YOUR CODE
 };
 
 /*

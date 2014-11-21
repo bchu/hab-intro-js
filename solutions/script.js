@@ -48,7 +48,7 @@ var launch = function() {
     return wrongCommand();
   }
   isLaunched = true;
-  change(['image', 'resources/spaceship.png']);
+  ship.src = 'resources/spaceship.png';
 };
 
 var go = function(commandWords) {
@@ -66,8 +66,10 @@ var go = function(commandWords) {
   if (displacement === undefined) {
     wrongCommand();
   }
-  var shipLeftPosition = parseInt(ship.style.left.split('px').join(''), 10);
-  var shipBottomPosition = parseInt(ship.style.bottom.split('px').join(''), 10);
+  var shipLeftText = ship.style.left.split('px').join('');
+  var shipBottomText = ship.style.bottom.split('px').join('');
+  var shipLeftPosition = parseInt(shipLeftText, 10);
+  var shipBottomPosition = parseInt(shipBottomText, 10);
   ship.style.left = shipLeftPosition + displacement[0] + 'px';
   ship.style.bottom = shipBottomPosition + displacement[1] + 'px';
   // var properties = {
