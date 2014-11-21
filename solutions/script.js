@@ -42,8 +42,9 @@ var commandHandler = function(cmd) {
 };
 
 var isLaunched = false;
+var isExploded = false;
 var launch = function() {
-  if (isLaunched) {
+  if (isLaunched || isExploded) {
     return wrongCommand();
   }
   isLaunched = true;
@@ -51,7 +52,7 @@ var launch = function() {
 };
 
 var go = function(commandWords) {
-  if (!isLaunched) {
+  if (!isLaunched || isExploded) {
     return wrongCommand();
   }
 
@@ -77,7 +78,7 @@ var go = function(commandWords) {
 };
 
 var change = function(commandWords) {
-  if (!isLaunched) {
+  if (!isLaunched || isExploded) {
     return wrongCommand();
   }
 
@@ -91,6 +92,7 @@ var change = function(commandWords) {
 
 var wrongCommand = function() {
   isLaunched = true;
+  isExploded = true;
   ship.src = 'resources/explode.png';
   // alert('Command not recognized');
 };
