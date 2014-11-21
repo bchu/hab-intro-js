@@ -11,6 +11,16 @@ var reduce = function(list, reducer, initializer) {
   // YOUR CODE
 };
 
+// invokeOnce takes in a function with no arguments and returns another function.
+// The returned function calls func, but only once.
+// var shout = function() { console.log('shout'); };
+// var shoutOnce = invokeOnce(shout)
+// shoutOnce(); // prints 'shout'
+// shoutOnce(); // does nothing
+var invokeOnce = function(func) {
+
+};
+
 /*
   THIS IS A BONUS QUESTION - I won't go over this until after the workshop.
 
@@ -41,6 +51,13 @@ var square = function(num) {
   return num * num;
 };
 console.log(map(list, square)); // should be [1, 4, 9, 16]
+
+var shout = function() {
+  return 'HI';
+};
+var shoutOnce = invokeOnce(shout);
+console.log(shoutOnce()); // should be HI
+console.log(shoutOnce()); // should be undefined
 
 var sum = function(a, b) {
   return a + b;
