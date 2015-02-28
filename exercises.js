@@ -11,7 +11,7 @@ var reduce = function(list, reducer, initializer) {
   // YOUR CODE
 };
 
-// invokeOnce takes in a function (which has no arguments) and returns another function.
+// invokeOnce takes in a function (which take no arguments) and returns another function.
 // When the returned function is called, it calls func.
 // However, the returned function can only be called once.
 // var shout = function() { console.log('shout'); };
@@ -23,7 +23,7 @@ var invokeOnce = function(func) {
 };
 
 /*
-  THIS IS A BONUS QUESTION - I won't go over this until after the workshop.
+  THIS IS A BONUS QUESTION - it requires a bit of researching JS features.
 
   defaultedTo takes in a function (A) and defaultValue, and returns a function (B).
   If A is called without fewer arguments than it takes, return defaultValue. Otherwise, call A with the arguments.
