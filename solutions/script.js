@@ -1,16 +1,17 @@
-var textBox = document.querySelector('.control input');
-var ship = document.querySelector('.ship');
-var button = document.querySelector('.control button');
+var textBox = $('.control input'); // document.querySelector('.control input');
+var ship = $('.ship'); // document.querySelector('.ship');
+var button = $('.control button'); // document.querySelector('.control button');
 
+textBox.focus();
 
 var commandEntered = function(event) {
   event.preventDefault();
-  var text = textBox.value;
+  var text = textBox.val(); // textBox.value;
   commandHandler(text);
-  textBox.value = '';
+  textBox.val(''); // textBox.value = '';
 };
 
-button.addEventListener('click', commandEntered);
+button.on('click', commandEntered); // button.addEventListener('click', commandEntered);
 
 var commandHandler = function(cmd) {
   var dispatch = {
@@ -48,7 +49,7 @@ var launch = function() {
     return wrongCommand();
   }
   isLaunched = true;
-  ship.src = 'resources/spaceship.png';
+  ship.attr('src', 'resources/spaceship.png'); // ship.src = 'resources/spaceship.png';
 };
 
 var go = function(commandWords) {
@@ -66,16 +67,15 @@ var go = function(commandWords) {
   if (displacement === undefined) {
     wrongCommand();
   }
-  var shipLeftText = ship.style.left.split('px').join('');
-  var shipBottomText = ship.style.bottom.split('px').join('');
+  var shipLeftText = ship.css('left'); // ship.style.left;
+  var shipBottomText = ship.css('bottom'); // ship.style.bottom;
   var shipLeftPosition = parseInt(shipLeftText, 10);
   var shipBottomPosition = parseInt(shipBottomText, 10);
-  ship.style.left = shipLeftPosition + displacement[0] + 'px';
-  ship.style.bottom = shipBottomPosition + displacement[1] + 'px';
-  // var properties = {
-  //   left: shipLeftPosition + displacement[0] + 'px',
-  //   bottom: shipBottomPosition + displacement[1] + 'px'
-  // };
+  var properties = {
+    left: shipLeftPosition + displacement[0] + 'px',
+    bottom: shipBottomPosition + displacement[1] + 'px'
+  };
+  ship.css(properties);
   // $(ship).animate(properties);
 };
 
@@ -95,7 +95,7 @@ var change = function(commandWords) {
 var wrongCommand = function() {
   isLaunched = true;
   isExploded = true;
-  ship.src = 'resources/explode.png';
+  ship.attr('src', 'resources/explode.png'); // ship.src = 'resources/explode.png';
   // alert('Command not recognized');
 };
 
