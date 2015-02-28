@@ -11,7 +11,7 @@ Solutions are in `solutions`.
 ## Prerequisites:
 
 1. **You know how to code.** This workshop is not designed to teach you how to code. I'll be assuming CS 61A-level knowledge of Python.
-2. Please make sure you have `Google Chrome`. Optional: also install `Node.js` [http://nodejs.org/](http://nodejs.org/). (If you can't get node.js installed, don't worry).
+2. Please make sure you have `Google Chrome`.
 
 ## Agenda:
 
