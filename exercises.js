@@ -6,7 +6,7 @@ var map = function(list, mapper) {
 
 // identical to Python's itertools.reduce function
 // var mult = function(a,b){ return a * b }
-// reducer([2,2,2], mult, 1) === 8
+// reduce([2,2,2], mult, 1) === 8
 var reduce = function(list, reducer, initializer) {
   // YOUR CODE
 };
@@ -25,8 +25,8 @@ var invokeOnce = function(func) {
 /*
   THIS IS A BONUS QUESTION - it requires a bit of researching JS features.
 
-  defaultedTo takes in a function (A) and defaultValue, and returns a function (B).
-  If A is called without fewer arguments than it takes, return defaultValue. Otherwise, call A with the arguments.
+  enforceArgumentCount takes in a function (func) and defaultValue, and returns a function (B).
+  If func is called without fewer arguments than it takes, return defaultValue. Otherwise, call func with the arguments.
   func.length = the number of arguments func takes.
 
   Inside every function is a hidden variable called "arguments" (without quotes).
