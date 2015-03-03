@@ -16,5 +16,5 @@ Solutions are in `solutions`.
 ## Agenda:
 
 1. Python to JavaScript conversion.
-2. Exercises.
+2. Exercises. Show people how to test the code in Chrome, and how to use debugger.
 3. Fun toy app.
