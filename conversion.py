@@ -4,12 +4,6 @@ print(5)
 
 a = 5
 
-array = ['s', 5, 8]
-
-third = array[2]
-
-last_element = array[len(array) - 1]
-
 dictionary = {
   'hello': 'hi',
   'there': 'that'
@@ -17,11 +11,34 @@ dictionary = {
 
 word = dictionary['hello']
 
+b = 'hello'
+
+b[0] = 'j'
+
+array = ['s', 5, 8]
+
+third = array[2]
+
+var zero_to_three = array.slice(0, 3)
+
+last_element = array[len(array) - 1]
+
+new_array = []
+
+new_array.append(1)
+new_array.append(2)
+new_array.pop()
+new_array.insert(0, 'a')
+new_array.pop(0)
+
+
+#############################################
+
+
 def square(num):
   return num * num
 
 c = square(a)
-
 
 if True:
   return True
@@ -40,48 +57,26 @@ while a > 0:
 for x in range(5):
   print(x ** 2)
 
-b = 'hello!'
 
-b[0] == 'h'
+#############################################
 
-zero_to_three = b[0:3]
 
 sheep = lambda x: x
 
+def higher_order(num):
+  def inception():
+    nonlocal num
+    num += 5
+  inception()
+  return num
+
+higher_order(6) # returns 11
+
 mess_this = 1
 def will_do():
-  nonlocal mess_this # ERROR THIS IS IMPOSSIBLE IN PYTHON
-  mess_this += 1
+  global mess_this
+  mess_this += 6
 
-will_do() # ERROR
-will_do() # ERROR
+will_do()
 
-print(mess_this) # ERROR
-
-def higher_order(num):
-  '''
-  # THIS IS IMPOSSIBLE IN PYTHON:
-  nonlocal a
-  nonlocal b
-  nonlocal c
-  nonlocal dictionary
-  nonlocal word
-  nonlocal arrray
-  .
-  .
-  .
-  '''
-  def inception():
-    return num + 5
-  return inception
-
-higher_order(6)() # returns 11
-
-def higher_order_redux(mess_this):
-  def will_do():
-    nonlocal mess_this
-    mess_this += 1
-  will_do()
-  return mess_this
-
-higher_order_redux(4) # 6
+print(mess_this) # 7
