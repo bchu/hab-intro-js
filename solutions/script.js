@@ -7,53 +7,41 @@ textBox.focus();
 var commandEntered = function(event) {
   event.preventDefault();
   var text = textBox.val(); // textBox.value;
-  commandHandler(text);
   textBox.val(''); // textBox.value = '';
+
+  var words = text.split(' ');
+  var firstWord = words[0];
+  var secondWord = words[1];
+
+  if (firstWord === 'launch') {
+    launch();
+  }
+  else if (firstWord === 'go') {
+    go(secondWord);
+  }
+  else if (firstWord === 'rotate') {
+    rotate(secondWord);
+  }
+  else {
+    wrongCommand();
+  }
 };
 
 button.on('click', commandEntered); // button.addEventListener('click', commandEntered);
 
-var commandHandler = function(cmd) {
-  var dispatch = {
-    launch: launch,
-    go: go,
-    change: change
-  };
-  var words = cmd.split(' ');
-  var firstWord = words[0];
-  words.shift();
-  var handler = dispatch[firstWord];
-  if (handler === undefined) {
-    return wrongCommand();
-  }
-  handler(words);
-
-  // if (firstWord == 'launch') {
-  //   launch();
-  // }
-  // else if (firstWord === 'go') {
-  //   go(words);
-  // }
-  // else if (firstWord === 'change') {
-  //   change(words);
-  // }
-  // else {
-  //   wrongCommand();
-  // }
-};
-
 var isLaunched = false;
-var isExploded = false;
+var isDestroyed = false;
+
 var launch = function() {
-  if (isLaunched || isExploded) {
-    return wrongCommand();
+  if (isDestroyed) {
+    return;
   }
   isLaunched = true;
   ship.attr('src', 'resources/spaceship.png'); // ship.src = 'resources/spaceship.png';
 };
 
-var go = function(commandWords) {
-  if (!isLaunched || isExploded) {
+var go = function(direction) {
+  if (!isLaunched) {
     return wrongCommand();
   }
 
@@ -63,14 +51,15 @@ var go = function(commandWords) {
     up: [0, 80],
     down: [0, -80]
   };
-  var displacement = directions[commandWords[0]];
+  var displacement = directions[direction];
   if (displacement === undefined) {
     wrongCommand();
   }
+
   var shipLeftText = ship.css('left'); // ship.style.left;
   var shipBottomText = ship.css('bottom'); // ship.style.bottom;
-  var shipLeftPosition = parseInt(shipLeftText, 10);
-  var shipBottomPosition = parseInt(shipBottomText, 10);
+  var shipLeftPosition = parseInt(shipLeftText);
+  var shipBottomPosition = parseInt(shipBottomText);
   var properties = {
     left: shipLeftPosition + displacement[0] + 'px',
     bottom: shipBottomPosition + displacement[1] + 'px'
@@ -79,22 +68,21 @@ var go = function(commandWords) {
   // $(ship).animate(properties);
 };
 
-var change = function(commandWords) {
-  if (!isLaunched || isExploded) {
+var rotate = function(amount) {
+  if (!isLaunched) {
     return wrongCommand();
   }
 
-  if (commandWords[0] == 'image') {
-    ship.src = commandWords[1];
-  }
-  else {
-    return wrongCommand();
-  }
+  var degrees = parseInt(amount);
+  ship.css({
+    transition: '1s ease-in',
+    transform: 'rotate(' + degrees + 'deg)'
+  });
 };
 
 var wrongCommand = function() {
-  isLaunched = true;
-  isExploded = true;
+  isLaunched = false;
+  isDestroyed = true;
   ship.attr('src', 'resources/explode.png'); // ship.src = 'resources/explode.png';
   // alert('Command not recognized');
 };
